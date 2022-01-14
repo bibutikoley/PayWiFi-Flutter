@@ -16,176 +16,182 @@ class RegisterPage extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(24.0, 40.0, 24.0, 0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Register new\naccount',
-                    style: heading2.copyWith(color: textBlack),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Image.asset(
-                    'assets/images/accent.png',
-                    width: 99,
-                    height: 4,
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 48,
-              ),
-              Form(
-                child: Column(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(24.0, 40.0, 24.0, 0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: textWhiteGrey,
-                        borderRadius: BorderRadius.circular(14.0),
-                      ),
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          hintText: 'Email',
-                          hintStyle: heading6.copyWith(color: textGrey),
-                          border: const OutlineInputBorder(
-                            borderSide: BorderSide.none,
-                          ),
-                        ),
-                      ),
+                    Text(
+                      'Register new\naccount',
+                      style: heading2.copyWith(color: textBlack),
                     ),
                     const SizedBox(
-                      height: 32,
+                      height: 20,
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: textWhiteGrey,
-                        borderRadius: BorderRadius.circular(14.0),
-                      ),
-                      child: Obx(
-                        () => TextFormField(
-                          obscureText: _authPageStateManager
-                              .registerPasswordVisible.isFalse,
+                    Image.asset(
+                      'assets/images/accent.png',
+                      width: 99,
+                      height: 4,
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 48,
+                ),
+                Form(
+                  child: Column(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          color: textWhiteGrey,
+                          borderRadius: BorderRadius.circular(14.0),
+                        ),
+                        child: TextFormField(
                           decoration: InputDecoration(
-                            hintText: 'Password',
+                            hintText: 'Email',
                             hintStyle: heading6.copyWith(color: textGrey),
-                            suffixIcon: IconButton(
-                              color: textGrey,
-                              splashRadius: 1,
-                              icon: Icon(
-                                _authPageStateManager
-                                        .registerPasswordVisible.isFalse
-                                    ? Icons.visibility_outlined
-                                    : Icons.visibility_off_outlined,
-                              ),
-                              onPressed: togglePasswordState,
-                            ),
                             border: const OutlineInputBorder(
                               borderSide: BorderSide.none,
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 32,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: textWhiteGrey,
-                        borderRadius: BorderRadius.circular(14.0),
+                      const SizedBox(
+                        height: 32,
                       ),
-                      child: Obx(
-                        () => TextFormField(
-                          obscureText: _authPageStateManager
-                              .confirmRegisterPasswordVisible.isFalse,
-                          decoration: InputDecoration(
-                            hintText: 'Password Confirmation',
-                            hintStyle: heading6.copyWith(color: textGrey),
-                            suffixIcon: IconButton(
-                              color: textGrey,
-                              splashRadius: 1,
-                              icon: Icon(
-                                _authPageStateManager
-                                        .confirmRegisterPasswordVisible.isFalse
-                                    ? Icons.visibility_outlined
-                                    : Icons.visibility_off_outlined,
+                      Container(
+                        decoration: BoxDecoration(
+                          color: textWhiteGrey,
+                          borderRadius: BorderRadius.circular(14.0),
+                        ),
+                        child: Obx(
+                          () => TextFormField(
+                            obscureText: _authPageStateManager
+                                .registerPasswordVisible.isFalse,
+                            decoration: InputDecoration(
+                              hintText: 'Password',
+                              hintStyle: heading6.copyWith(color: textGrey),
+                              suffixIcon: IconButton(
+                                color: textGrey,
+                                splashRadius: 1,
+                                icon: Icon(
+                                  _authPageStateManager
+                                          .registerPasswordVisible.isFalse
+                                      ? Icons.visibility_outlined
+                                      : Icons.visibility_off_outlined,
+                                ),
+                                onPressed: togglePasswordState,
                               ),
-                              onPressed: toggleConfirmPasswordState,
-                            ),
-                            border: const OutlineInputBorder(
-                              borderSide: BorderSide.none,
+                              border: const OutlineInputBorder(
+                                borderSide: BorderSide.none,
+                              ),
                             ),
                           ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 32,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: textWhiteGrey,
+                          borderRadius: BorderRadius.circular(14.0),
+                        ),
+                        child: Obx(
+                          () => TextFormField(
+                            obscureText: _authPageStateManager
+                                .confirmRegisterPasswordVisible.isFalse,
+                            decoration: InputDecoration(
+                              hintText: 'Password Confirmation',
+                              hintStyle: heading6.copyWith(color: textGrey),
+                              suffixIcon: IconButton(
+                                color: textGrey,
+                                splashRadius: 1,
+                                icon: Icon(
+                                  _authPageStateManager
+                                          .confirmRegisterPasswordVisible.isFalse
+                                      ? Icons.visibility_outlined
+                                      : Icons.visibility_off_outlined,
+                                ),
+                                onPressed: toggleConfirmPasswordState,
+                              ),
+                              border: const OutlineInputBorder(
+                                borderSide: BorderSide.none,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 32,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    AuthPageCheckBox(),
+                    const SizedBox(
+                      width: 12,
+                    ),
+                    Flexible(
+                      child: RichText(
+                        text: TextSpan(
+                          text: 'By creating an account, you agree to our ',
+                          style: regular16pt.copyWith(color: textGrey),
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: 'Terms & Conditions',
+                              style:regular16pt.copyWith(color: primaryBlue),
+                            ),
+                          ],
                         ),
                       ),
                     ),
                   ],
                 ),
-              ),
-              const SizedBox(
-                height: 32,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  AuthPageCheckBox(),
-                  const SizedBox(
-                    width: 12,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'By creating an account, you agree to our',
-                        style: regular16pt.copyWith(color: textGrey),
-                      ),
-                      Text(
-                        'Terms & Conditions',
+                const SizedBox(
+                  height: 32,
+                ),
+                CustomPrimaryButton(
+                  buttonColor: primaryBlue,
+                  textValue: 'Register',
+                  textColor: Colors.white,
+                ),
+                const SizedBox(
+                  height: 50,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Already have an account? ",
+                      style: regular16pt.copyWith(color: textGrey),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        //reset the button visibility to original state.
+                        _authPageStateManager.registerPasswordVisible.value = false;
+                        _authPageStateManager.confirmRegisterPasswordVisible.value = true;
+                        Get.back();
+                      },
+                      child: Text(
+                        'Login',
                         style: regular16pt.copyWith(color: primaryBlue),
                       ),
-                    ],
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 32,
-              ),
-              CustomPrimaryButton(
-                buttonColor: primaryBlue,
-                textValue: 'Register',
-                textColor: Colors.white,
-              ),
-              const SizedBox(
-                height: 50,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Already have an account? ",
-                    style: regular16pt.copyWith(color: textGrey),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      //reset the button visibility to original state.
-                      _authPageStateManager.registerPasswordVisible.value = false;
-                      _authPageStateManager.confirmRegisterPasswordVisible.value = true;
-                      Get.back();
-                    },
-                    child: Text(
-                      'Login',
-                      style: regular16pt.copyWith(color: primaryBlue),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+                const SizedBox(
+                  height: 50,
+                ),
+              ],
+            ),
           ),
         ),
       ),

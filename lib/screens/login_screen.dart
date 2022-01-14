@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pay_wifi/custom_views/custom_checkbox.dart';
 import 'package:pay_wifi/custom_views/custom_outlined_button.dart';
 import 'package:pay_wifi/custom_views/custom_primary_button.dart';
+import 'package:pay_wifi/custom_views/login_page_check_box.dart';
 import 'package:pay_wifi/screens/register_screen.dart';
 import 'package:pay_wifi/state_managers/login_page_state_manager.dart';
 import 'package:pay_wifi/theme.dart';
 
 class LoginPage extends StatelessWidget {
+
   LoginPage({Key? key}) : super(key: key);
 
-  final LoginPageStateManager _loginPageStateManager =
-      Get.put(LoginPageStateManager());
+  final LoginPageStateManager _loginPageStateManager = Get.put(LoginPageStateManager());
 
   void togglePassword() {
-    _loginPageStateManager.isPasswordVisible = RxBool(_loginPageStateManager.isPasswordVisible.value);
+    _loginPageStateManager.isPasswordVisible.value = _loginPageStateManager.isPasswordVisible.toggle().value;
   }
 
   @override
@@ -106,7 +106,7 @@ class LoginPage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  CustomCheckbox(),
+                  LoginPageCheckBox(),
                   const SizedBox(
                     width: 12,
                   ),

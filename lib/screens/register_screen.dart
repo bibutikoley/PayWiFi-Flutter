@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pay_wifi/custom_views/custom_checkbox.dart';
 import 'package:pay_wifi/custom_views/custom_primary_button.dart';
 import 'package:pay_wifi/theme.dart';
 
@@ -135,7 +134,7 @@ class _RegisterPageState extends State<RegisterPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  CustomCheckbox(),
+                  //CustomCheckbox(),
                   SizedBox(
                     width: 12,
                   ),

@@ -4,10 +4,10 @@ import 'package:pay_wifi/state_managers/login_page_state_manager.dart';
 
 import '../theme.dart';
 
-class LoginPageCheckBox extends StatelessWidget {
+class AuthPageCheckBox extends StatelessWidget {
   final LoginPageStateManager _loginPageStateManager = Get.find();
 
-  LoginPageCheckBox({Key? key}) : super(key: key);
+  AuthPageCheckBox({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pay_wifi/custom_views/auth_page_check_box.dart';
 import 'package:pay_wifi/custom_views/custom_outlined_button.dart';
 import 'package:pay_wifi/custom_views/custom_primary_button.dart';
-import 'package:pay_wifi/custom_views/auth_page_check_box.dart';
 import 'package:pay_wifi/screens/register_screen.dart';
-import 'package:pay_wifi/state_managers/login_page_state_manager.dart';
+import 'package:pay_wifi/state_managers/auth_page_state_manager.dart';
 import 'package:pay_wifi/theme.dart';
 
 class LoginPage extends StatelessWidget {
-
   LoginPage({Key? key}) : super(key: key);
 
-  final LoginPageStateManager _loginPageStateManager = Get.put(LoginPageStateManager());
+  final AuthPageStateManager _authPageStateManager =
+      Get.put(AuthPageStateManager());
 
   void togglePassword() {
-    _loginPageStateManager.isPasswordVisible.value = _loginPageStateManager.isPasswordVisible.toggle().value;
+    _authPageStateManager.isPasswordVisible.value =
+        _authPageStateManager.isPasswordVisible.toggle().value;
   }
 
   @override
@@ -69,22 +70,22 @@ class LoginPage extends StatelessWidget {
                       const SizedBox(
                         height: 32,
                       ),
-                      Obx(
-                        () => Container(
-                          decoration: BoxDecoration(
-                            color: textWhiteGrey,
-                            borderRadius: BorderRadius.circular(14.0),
-                          ),
-                          child: TextFormField(
+                      Container(
+                        decoration: BoxDecoration(
+                          color: textWhiteGrey,
+                          borderRadius: BorderRadius.circular(14.0),
+                        ),
+                        child: Obx(
+                          () => TextFormField(
                             obscureText:
-                                _loginPageStateManager.isPasswordVisible.isFalse,
+                                _authPageStateManager.isPasswordVisible.isFalse,
                             decoration: InputDecoration(
                               hintText: 'Password',
                               hintStyle: heading6.copyWith(color: textGrey),
                               suffixIcon: IconButton(
                                 color: textGrey,
                                 splashRadius: 1,
-                                icon: Icon(_loginPageStateManager
+                                icon: Icon(_authPageStateManager
                                         .isPasswordVisible.isFalse
                                     ? Icons.visibility_outlined
                                     : Icons.visibility_off_outlined),
@@ -150,10 +151,7 @@ class LoginPage extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => RegisterPage()));
+                        Get.to(() => RegisterPage());
                       },
                       child: Text(
                         'Register',

@@ -1,22 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:pay_wifi/custom_views/custom_primary_button.dart';
+import 'package:get/get.dart';
 import 'package:pay_wifi/custom_views/auth_page_check_box.dart';
+import 'package:pay_wifi/custom_views/custom_primary_button.dart';
+import 'package:pay_wifi/state_managers/auth_page_state_manager.dart';
 import 'package:pay_wifi/theme.dart';
 
-class RegisterPage extends StatefulWidget {
-  @override
-  _RegisterPageState createState() => _RegisterPageState();
-}
+class RegisterPage extends StatelessWidget {
+  RegisterPage({Key? key}) : super(key: key);
 
-class _RegisterPageState extends State<RegisterPage> {
-  bool passwordVisible = false;
-  bool passwordConfrimationVisible = false;
-
-  void togglePassword() {
-    setState(() {
-      passwordVisible = !passwordVisible;
-    });
-  }
+  final AuthPageStateManager _authPageStateManager = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -75,21 +67,27 @@ class _RegisterPageState extends State<RegisterPage> {
                         color: textWhiteGrey,
                         borderRadius: BorderRadius.circular(14.0),
                       ),
-                      child: TextFormField(
-                        obscureText: !passwordVisible,
-                        decoration: InputDecoration(
-                          hintText: 'Password',
-                          hintStyle: heading6.copyWith(color: textGrey),
-                          suffixIcon: IconButton(
-                            color: textGrey,
-                            splashRadius: 1,
-                            icon: Icon(passwordVisible
-                                ? Icons.visibility_outlined
-                                : Icons.visibility_off_outlined),
-                            onPressed: togglePassword,
-                          ),
-                          border: const OutlineInputBorder(
-                            borderSide: BorderSide.none,
+                      child: Obx(
+                        () => TextFormField(
+                          obscureText: _authPageStateManager
+                              .registerPasswordVisible.isFalse,
+                          decoration: InputDecoration(
+                            hintText: 'Password',
+                            hintStyle: heading6.copyWith(color: textGrey),
+                            suffixIcon: IconButton(
+                              color: textGrey,
+                              splashRadius: 1,
+                              icon: Icon(
+                                _authPageStateManager
+                                        .registerPasswordVisible.isFalse
+                                    ? Icons.visibility_outlined
+                                    : Icons.visibility_off_outlined,
+                              ),
+                              onPressed: togglePasswordState,
+                            ),
+                            border: const OutlineInputBorder(
+                              borderSide: BorderSide.none,
+                            ),
                           ),
                         ),
                       ),
@@ -102,26 +100,27 @@ class _RegisterPageState extends State<RegisterPage> {
                         color: textWhiteGrey,
                         borderRadius: BorderRadius.circular(14.0),
                       ),
-                      child: TextFormField(
-                        obscureText: !passwordConfrimationVisible,
-                        decoration: InputDecoration(
-                          hintText: 'Password Confirmation',
-                          hintStyle: heading6.copyWith(color: textGrey),
-                          suffixIcon: IconButton(
-                            color: textGrey,
-                            splashRadius: 1,
-                            icon: Icon(passwordConfrimationVisible
-                                ? Icons.visibility_outlined
-                                : Icons.visibility_off_outlined),
-                            onPressed: () {
-                              setState(() {
-                                passwordConfrimationVisible =
-                                    !passwordConfrimationVisible;
-                              });
-                            },
-                          ),
-                          border: const OutlineInputBorder(
-                            borderSide: BorderSide.none,
+                      child: Obx(
+                        () => TextFormField(
+                          obscureText: _authPageStateManager
+                              .confirmRegisterPasswordVisible.isFalse,
+                          decoration: InputDecoration(
+                            hintText: 'Password Confirmation',
+                            hintStyle: heading6.copyWith(color: textGrey),
+                            suffixIcon: IconButton(
+                              color: textGrey,
+                              splashRadius: 1,
+                              icon: Icon(
+                                _authPageStateManager
+                                        .confirmRegisterPasswordVisible.isFalse
+                                    ? Icons.visibility_outlined
+                                    : Icons.visibility_off_outlined,
+                              ),
+                              onPressed: toggleConfirmPasswordState,
+                            ),
+                            border: const OutlineInputBorder(
+                              borderSide: BorderSide.none,
+                            ),
                           ),
                         ),
                       ),
@@ -174,9 +173,10 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pop(
-                        context,
-                      );
+                      //reset the button visibility to original state.
+                      _authPageStateManager.registerPasswordVisible.value = false;
+                      _authPageStateManager.confirmRegisterPasswordVisible.value = true;
+                      Get.back();
                     },
                     child: Text(
                       'Login',
@@ -190,5 +190,15 @@ class _RegisterPageState extends State<RegisterPage> {
         ),
       ),
     );
+  }
+
+  void togglePasswordState() {
+    _authPageStateManager.registerPasswordVisible.value =
+        _authPageStateManager.registerPasswordVisible.toggle().value;
+  }
+
+  void toggleConfirmPasswordState() {
+    _authPageStateManager.confirmRegisterPasswordVisible.value =
+        _authPageStateManager.confirmRegisterPasswordVisible.toggle().value;
   }
 }

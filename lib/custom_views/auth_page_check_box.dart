@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pay_wifi/state_managers/login_page_state_manager.dart';
+import 'package:pay_wifi/state_managers/auth_page_state_manager.dart';
 
 import '../theme.dart';
 
 class AuthPageCheckBox extends StatelessWidget {
-  final LoginPageStateManager _loginPageStateManager = Get.find();
+  final AuthPageStateManager _authPageStateManager = Get.find();
 
   AuthPageCheckBox({Key? key}) : super(key: key);
 
@@ -13,17 +13,17 @@ class AuthPageCheckBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        _loginPageStateManager.isRememberMeChecked.value =
-            _loginPageStateManager.isRememberMeChecked.toggle().value;
+        _authPageStateManager.isRememberMeChecked.value =
+            _authPageStateManager.isRememberMeChecked.toggle().value;
       },
       child: Obx(
         () => Container(
           decoration: BoxDecoration(
-            color: _loginPageStateManager.isRememberMeChecked.value
+            color: _authPageStateManager.isRememberMeChecked.value
                 ? primaryBlue
                 : Colors.transparent,
             borderRadius: BorderRadius.circular(4.0),
-            border: _loginPageStateManager.isRememberMeChecked.value
+            border: _authPageStateManager.isRememberMeChecked.value
                 ? null
                 : Border.all(
                     color: textGrey,
@@ -32,7 +32,7 @@ class AuthPageCheckBox extends StatelessWidget {
           ),
           width: 20,
           height: 20,
-          child: _loginPageStateManager.isRememberMeChecked.value
+          child: _authPageStateManager.isRememberMeChecked.value
               ? const Icon(
                   Icons.check,
                   size: 20,

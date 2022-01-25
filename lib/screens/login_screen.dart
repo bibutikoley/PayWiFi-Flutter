@@ -18,6 +18,11 @@ class LoginPage extends StatelessWidget {
         _authPageStateManager.isPasswordVisible.toggle().value;
   }
 
+  void toggleRememberMeAction() {
+    _authPageStateManager.isRememberMeChecked.value =
+        _authPageStateManager.isRememberMeChecked.toggle().value;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -111,7 +116,9 @@ class LoginPage extends StatelessWidget {
                     const SizedBox(
                       width: 12,
                     ),
-                    Text('Remember me', style: regular16pt),
+                    GestureDetector(
+                        onTap: toggleRememberMeAction,
+                        child: Text('Remember me', style: regular16pt)),
                   ],
                 ),
                 const SizedBox(

@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pay_wifi/custom_views/auth_page_check_box.dart';
@@ -113,7 +114,8 @@ class RegisterPage extends StatelessWidget {
                                 splashRadius: 1,
                                 icon: Icon(
                                   _authPageStateManager
-                                          .confirmRegisterPasswordVisible.isFalse
+                                          .confirmRegisterPasswordVisible
+                                          .isFalse
                                       ? Icons.visibility_outlined
                                       : Icons.visibility_off_outlined,
                                 ),
@@ -147,7 +149,11 @@ class RegisterPage extends StatelessWidget {
                           children: <TextSpan>[
                             TextSpan(
                               text: 'Terms & Conditions',
-                              style:regular16pt.copyWith(color: primaryBlue),
+                              style: regular16pt.copyWith(color: primaryBlue),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  //TODO:: Perform action here.
+                                },
                             ),
                           ],
                         ),
@@ -176,8 +182,10 @@ class RegisterPage extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         //reset the button visibility to original state.
-                        _authPageStateManager.registerPasswordVisible.value = false;
-                        _authPageStateManager.confirmRegisterPasswordVisible.value = true;
+                        _authPageStateManager.registerPasswordVisible.value =
+                            false;
+                        _authPageStateManager
+                            .confirmRegisterPasswordVisible.value = true;
                         Get.back();
                       },
                       child: Text(

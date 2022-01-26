@@ -158,17 +158,22 @@ class LoginPage extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        showModalBottomSheet(
-                          context: context,
-                          isScrollControlled: true,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(24),
-                          ),
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          builder: (context) => SizedBox(
+                        Get.bottomSheet(
+                          SizedBox(
                             height: (Get.height * 0.90),
                             child: RegisterPage(),
                           ),
+                          isScrollControlled: true,
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.vertical(
+                              top: Radius.circular(24),
+                            ),
+                          ),
+                          enterBottomSheetDuration:
+                              const Duration(milliseconds: 400),
+                          exitBottomSheetDuration:
+                              const Duration(milliseconds: 400),
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
                         );
                       },
                       child: Text(

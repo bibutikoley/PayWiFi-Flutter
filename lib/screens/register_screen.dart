@@ -107,7 +107,7 @@ class RegisterPage extends StatelessWidget {
                             obscureText: _authPageStateManager
                                 .confirmRegisterPasswordVisible.isFalse,
                             decoration: InputDecoration(
-                              hintText: 'Password Confirmation',
+                              hintText: 'Confirm Password',
                               hintStyle: heading6.copyWith(color: textGrey),
                               suffixIcon: IconButton(
                                 color: textGrey,

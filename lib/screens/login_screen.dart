@@ -158,7 +158,18 @@ class LoginPage extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Get.to(() => RegisterPage());
+                        showModalBottomSheet(
+                          context: context,
+                          isScrollControlled: true,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(24),
+                          ),
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          builder: (context) => SizedBox(
+                            height: (Get.height * 0.90),
+                            child: RegisterPage(),
+                          ),
+                        );
                       },
                       child: Text(
                         'Register',

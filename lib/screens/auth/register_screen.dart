@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pay_wifi/custom_views/auth_page_check_box.dart';
 import 'package:pay_wifi/custom_views/custom_primary_button.dart';
+import 'package:pay_wifi/screens/auth/terms_conditions.dart';
 import 'package:pay_wifi/state_managers/auth_page_state_manager.dart';
 import 'package:pay_wifi/theme.dart';
 
@@ -175,7 +176,7 @@ class RegisterPage extends StatelessWidget {
                                 style: regular16pt.copyWith(color: primaryBlue),
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () {
-                                    //TODO:: Perform action here.
+                                  Get.to(() => const TermsAndConditions());
                                   },
                               ),
                             ],

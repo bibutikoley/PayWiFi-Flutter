@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pay_wifi/screens/splash_screen.dart';
+import 'package:pay_wifi/screens/auth/splash_screen.dart';
 
 import 'di/app_module.dart';
 

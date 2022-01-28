@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:pay_wifi/custom_views/auth_page_check_box.dart';
 import 'package:pay_wifi/custom_views/custom_outlined_button.dart';
 import 'package:pay_wifi/custom_views/custom_primary_button.dart';
-import 'package:pay_wifi/screens/register_screen.dart';
+import 'package:pay_wifi/screens/auth/register_screen.dart';
 import 'package:pay_wifi/state_managers/auth_page_state_manager.dart';
 import 'package:pay_wifi/theme.dart';
 

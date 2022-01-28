@@ -10,8 +10,7 @@ import 'package:pay_wifi/theme.dart';
 class LoginPage extends StatelessWidget {
   LoginPage({Key? key}) : super(key: key);
 
-  final AuthPageStateManager _authPageStateManager =
-      Get.put(AuthPageStateManager());
+  final AuthPageStateManager _authPageStateManager = Get.find();
 
   void togglePassword() {
     _authPageStateManager.isPasswordVisible.value =

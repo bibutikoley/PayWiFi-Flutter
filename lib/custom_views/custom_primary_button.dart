@@ -5,11 +5,15 @@ class CustomPrimaryButton extends StatelessWidget {
   final Color buttonColor;
   final String textValue;
   final Color textColor;
+  final GestureTapCallback? onPressed;
 
-  const CustomPrimaryButton(
-      {Key? key, required this.buttonColor,
-      required this.textValue,
-      required this.textColor}) : super(key: key);
+  const CustomPrimaryButton({
+    Key? key,
+    required this.buttonColor,
+    required this.textValue,
+    required this.textColor,
+    this.onPressed,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +29,7 @@ class CustomPrimaryButton extends StatelessWidget {
         child: Material(
           color: Colors.transparent,
           child: InkWell(
-            onTap: () {},
+            onTap: onPressed,
             borderRadius: BorderRadius.circular(14.0),
             child: Center(
               child: Text(

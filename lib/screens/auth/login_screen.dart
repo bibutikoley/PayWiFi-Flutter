@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pay_wifi/custom_views/auth_page_check_box.dart';
@@ -134,6 +135,9 @@ class LoginPage extends StatelessWidget {
                     buttonColor: primaryBlue,
                     textValue: 'Login',
                     textColor: Colors.white,
+                    onPressed: () {
+                      printInfo(info: "Test");
+                    },
                   ),
                   const SizedBox(
                     height: 24,

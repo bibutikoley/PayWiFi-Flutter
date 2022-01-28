@@ -137,7 +137,7 @@ class LoginPage extends StatelessWidget {
                     textColor: Colors.white,
                     onPressed: () {
                       Future.delayed(const Duration(seconds: 4), () {
-                        Get.to(() => const LandingScreen());
+                        Get.off(() => const LandingScreen());
                       });
                     },
                   ),

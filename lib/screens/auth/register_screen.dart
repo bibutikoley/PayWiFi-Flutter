@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pay_wifi/custom_views/auth_page_check_box.dart';
 import 'package:pay_wifi/custom_views/custom_primary_button.dart';
-import 'package:pay_wifi/screens/auth/terms_conditions.dart';
+import 'package:pay_wifi/screens/auth/web_pages.dart';
+import 'package:pay_wifi/screens/auth/web_screen.dart';
 import 'package:pay_wifi/state_managers/auth_page_state_manager.dart';
 import 'package:pay_wifi/theme.dart';
 
@@ -176,7 +177,25 @@ class RegisterPage extends StatelessWidget {
                                 style: regular16pt.copyWith(color: primaryBlue),
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () {
-                                  Get.to(() => const TermsAndConditions());
+                                    Get.to(() => const WebScreen(
+                                          title: 'Terms & Conditions',
+                                          pages: WebPages.termsAndConditions,
+                                        ));
+                                  },
+                              ),
+                              TextSpan(
+                                text: ' and ',
+                                style: regular16pt.copyWith(color: textGrey),
+                              ),
+                              TextSpan(
+                                text: 'Privacy Policy',
+                                style: regular16pt.copyWith(color: primaryBlue),
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () {
+                                    Get.to(() => const WebScreen(
+                                          title: 'Privacy Policy',
+                                          pages: WebPages.privacyPolicy,
+                                        ));
                                   },
                               ),
                             ],

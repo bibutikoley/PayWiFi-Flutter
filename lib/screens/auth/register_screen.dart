@@ -5,6 +5,7 @@ import 'package:pay_wifi/custom_views/auth_page_check_box.dart';
 import 'package:pay_wifi/custom_views/custom_primary_button.dart';
 import 'package:pay_wifi/screens/auth/web_pages.dart';
 import 'package:pay_wifi/screens/auth/web_screen.dart';
+import 'package:pay_wifi/screens/profile/edit_profile_screen.dart';
 import 'package:pay_wifi/state_managers/auth_page_state_manager.dart';
 import 'package:pay_wifi/theme.dart';
 
@@ -211,6 +212,7 @@ class RegisterPage extends StatelessWidget {
                     buttonColor: primaryBlue,
                     textValue: 'Register',
                     textColor: Colors.white,
+                    onPressed: () => Get.to(() => const EditProfileScreen(header: "Complete your\nprofile",)),
                   ),
                   const SizedBox(
                     height: 50,

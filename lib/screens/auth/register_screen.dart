@@ -38,14 +38,14 @@ class RegisterPage extends StatelessWidget {
                       Center(
                         child: Container(
                             decoration: const BoxDecoration(
-                              color: Colors.black12,
+                              color: Color(0xff222222),
                               borderRadius: BorderRadius.all(
                                 Radius.circular(20),
                               ),
                             ),
                             child: const SizedBox(
-                              width: 148,
-                              height: 4,
+                              width: 142,
+                              height: 5,
                             )),
                       ),
                       const SizedBox(

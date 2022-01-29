@@ -172,7 +172,7 @@ class LoginPage extends StatelessWidget {
                         onTap: () {
                           Get.bottomSheet(
                             SizedBox(
-                              height: (Get.height * 0.90),
+                              height: (Get.height * 0.85),
                               child: RegisterPage(),
                             ),
                             isScrollControlled: true,

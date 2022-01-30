@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pay_wifi/custom_views/custom_primary_button.dart';
+import 'package:pay_wifi/screens/on_boarding/landing_screen.dart';
 
 import '../../theme.dart';
 
@@ -132,7 +133,8 @@ class EditProfileScreen extends StatelessWidget {
                                         SizedBox(
                                           height: 400,
                                           child: CupertinoDatePicker(
-                                              mode: CupertinoDatePickerMode.date,
+                                              mode:
+                                                  CupertinoDatePickerMode.date,
                                               initialDateTime: DateTime.now(),
                                               maximumYear: DateTime.now().year,
                                               onDateTimeChanged: (value) {
@@ -173,7 +175,9 @@ class EditProfileScreen extends StatelessWidget {
                     buttonColor: primaryBlue,
                     textValue: 'Save',
                     textColor: Colors.white,
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.offAll(() => const LandingScreen());
+                    },
                   ),
                   const SizedBox(
                     height: 32,

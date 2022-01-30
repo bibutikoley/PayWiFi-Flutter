@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Flutter Demo',
+      title: 'Pay WiFi',
       initialBinding: AppModule(),
       theme: ThemeData(
         platform: TargetPlatform.iOS,

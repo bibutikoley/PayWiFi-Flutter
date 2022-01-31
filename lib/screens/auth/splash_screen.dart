@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pay_wifi/di/app_module.dart';
 import 'package:pay_wifi/screens/auth/login_screen.dart';
+import 'package:pay_wifi/screens/on_boarding/landing_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -35,6 +37,8 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   _navigateToNextScreen() {
-    Get.off(() => LoginPage());
+    Get.off(
+      () => getxBox.hasData('token') ? const LandingScreen() : LoginPage(),
+    );
   }
 }

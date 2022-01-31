@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:pay_wifi/screens/auth/splash_screen.dart';
+import 'package:pay_wifi/theme.dart';
 
 import 'di/app_module.dart';
 
-void main() {
+void main() async {
+  await GetStorage.init();
   runApp(const MyApp());
 }
 
@@ -17,9 +20,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Pay WiFi',
       initialBinding: AppModule(),
-      theme: ThemeData(
-        platform: TargetPlatform.iOS,
-      ),
+      theme: appTheme,
       home: const SplashScreen(),
       debugShowCheckedModeBanner: false,
     );

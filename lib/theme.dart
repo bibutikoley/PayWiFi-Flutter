@@ -26,3 +26,9 @@ TextStyle regular16pt = const TextStyle(
   fontSize: 16,
   fontWeight: FontWeight.w400,
 );
+
+ThemeData appTheme = ThemeData(
+  platform: TargetPlatform.iOS,
+  primaryColor: primaryBlue,
+  textTheme: const TextTheme(),
+);

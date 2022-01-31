@@ -2,9 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pay_wifi/custom_views/custom_primary_button.dart';
+import 'package:pay_wifi/di/app_module.dart';
 import 'package:pay_wifi/screens/on_boarding/landing_screen.dart';
 
 import '../../theme.dart';
+import '../../utils.dart';
 
 class EditProfileScreen extends StatelessWidget {
   final String? header;
@@ -176,6 +178,8 @@ class EditProfileScreen extends StatelessWidget {
                     textValue: 'Save',
                     textColor: Colors.white,
                     onPressed: () {
+                      getxBox.write('isLoggedIn', true);
+                      getxBox.write('token', generateRandomString(64));
                       Get.offAll(() => const LandingScreen());
                     },
                   ),

@@ -3,10 +3,12 @@ import 'package:get/get.dart';
 import 'package:pay_wifi/custom_views/auth_page_check_box.dart';
 import 'package:pay_wifi/custom_views/custom_outlined_button.dart';
 import 'package:pay_wifi/custom_views/custom_primary_button.dart';
+import 'package:pay_wifi/di/app_module.dart';
 import 'package:pay_wifi/screens/auth/register_screen.dart';
 import 'package:pay_wifi/screens/on_boarding/landing_screen.dart';
 import 'package:pay_wifi/state_managers/auth_page_state_manager.dart';
 import 'package:pay_wifi/theme.dart';
+import 'package:pay_wifi/utils.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({Key? key}) : super(key: key);
@@ -136,6 +138,8 @@ class LoginPage extends StatelessWidget {
                     textValue: 'Login',
                     textColor: Colors.white,
                     onPressed: () {
+                      getxBox.write('isLoggedIn', true);
+                      getxBox.write('token', generateRandomString(64));
                       Future.delayed(const Duration(seconds: 4), () {
                         Get.off(() => const LandingScreen());
                       });

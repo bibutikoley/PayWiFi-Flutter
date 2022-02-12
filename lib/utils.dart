@@ -8,4 +8,3 @@ String generateRandomString(int length) {
   });
   return String.fromCharCodes(codeUnits);
 }
-

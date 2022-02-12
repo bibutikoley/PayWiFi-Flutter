@@ -9,7 +9,7 @@ class AppModule extends Bindings {
     // This keeps the controller alive throughout the app
     Get.put(AppStateManager());
     // This keeps the controller alive only till the Page/Screen is active
-    Get.lazyPut(() => AuthPageStateManager());
+    Get.lazyPut(() => AuthPageStateManager(), fenix: true);
   }
 }
 

@@ -12,26 +12,23 @@ class LandingScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Pay Wi-Fi"),
       ),
-      body: Column(
-        children: [
-          Center(
-            child: Column(
-              children: [
-                Text("${getxBox.read('token')}"),
-                ElevatedButton(
-                  onPressed: () {
-                    getxBox.erase().whenComplete(
-                          () => {
-                        Get.offAll(() => LoginPage()),
-                      },
-                    );
+      body: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text("${getxBox.read('token')}"),
+            ElevatedButton(
+              onPressed: () {
+                getxBox.erase().whenComplete(
+                      () => {
+                    Get.offAll(() => LoginPage()),
                   },
-                  child: const Text("Logout"),
-                ),
-              ],
+                );
+              },
+              child: const Text("Logout"),
             ),
-          ),
-        ],
+          ],
+        )
       ),
     );
   }

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pay_wifi/di/app_module.dart';
 import 'package:pay_wifi/screens/auth/login_screen.dart';
 
+import '../../store/app_store.dart';
+
 class LandingScreen extends StatelessWidget {
-  const LandingScreen({Key? key}) : super(key: key);
+  LandingScreen({Key? key}) : super(key: key);
+
+  final AppStore _appStore = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -13,23 +16,22 @@ class LandingScreen extends StatelessWidget {
         title: const Text("Pay Wi-Fi"),
       ),
       body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text("${getxBox.read('token')}"),
-            ElevatedButton(
-              onPressed: () {
-                getxBox.erase().whenComplete(
-                      () => {
-                    Get.offAll(() => LoginPage()),
-                  },
-                );
-              },
-              child: const Text("Logout"),
-            ),
-          ],
-        )
-      ),
+          child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(_appStore.accessToken),
+          ElevatedButton(
+            onPressed: () {
+              _appStore.clear().whenComplete(
+                    () => {
+                      Get.offAll(() => LoginPage()),
+                    },
+                  );
+            },
+            child: const Text("Logout"),
+          ),
+        ],
+      )),
     );
   }
 }

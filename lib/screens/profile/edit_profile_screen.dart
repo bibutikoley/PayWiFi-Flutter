@@ -1,17 +1,20 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pay_wifi/custom_views/custom_primary_button.dart';
-import 'package:pay_wifi/di/app_module.dart';
 import 'package:pay_wifi/screens/on_boarding/landing_screen.dart';
 
+import '../../store/app_store.dart';
 import '../../theme.dart';
 import '../../utils.dart';
 
 class EditProfileScreen extends StatelessWidget {
   final String? header;
 
-  const EditProfileScreen({Key? key, this.header}) : super(key: key);
+  final AppStore _appStore = Get.find();
+
+  EditProfileScreen({Key? key, this.header}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -140,7 +143,9 @@ class EditProfileScreen extends StatelessWidget {
                                               initialDateTime: DateTime.now(),
                                               maximumYear: DateTime.now().year,
                                               onDateTimeChanged: (value) {
-                                                print(value.toUtc());
+                                                if (kDebugMode) {
+                                                  print(value.toUtc());
+                                                }
                                               }),
                                         ),
 
@@ -178,9 +183,8 @@ class EditProfileScreen extends StatelessWidget {
                     textValue: 'Save',
                     textColor: Colors.white,
                     onPressed: () {
-                      getxBox.write('isLoggedIn', true);
-                      getxBox.write('token', generateRandomString(64));
-                      Get.offAll(() => const LandingScreen());
+                      _appStore.login(generateRandomString(32));
+                      Get.offAll(() => LandingScreen());
                     },
                   ),
                   const SizedBox(

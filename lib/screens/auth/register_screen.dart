@@ -212,7 +212,7 @@ class RegisterPage extends StatelessWidget {
                     buttonColor: primaryBlue,
                     textValue: 'Register',
                     textColor: Colors.white,
-                    onPressed: () => Get.to(() => const EditProfileScreen(header: "Complete your\nprofile",)),
+                    onPressed: () => Get.to(() => EditProfileScreen(header: "Complete your\nprofile",)),
                   ),
                   const SizedBox(
                     height: 50,

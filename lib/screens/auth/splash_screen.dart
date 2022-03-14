@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pay_wifi/screens/auth/login_screen.dart';
@@ -31,8 +32,10 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Center(
           child: GestureDetector(
             onTap: () => _navigateToNextScreen(),
-            child: Image.network(
-                "https://pub.dev/static/img/pub-dev-logo-2x.png?hash=umitaheu8hl7gd3mineshk2koqfngugi"),
+            child: CachedNetworkImage(
+              imageUrl:
+                  "https://pub.dev/static/img/pub-dev-logo-2x.png?hash=umitaheu8hl7gd3mineshk2koqfngugi",
+            ),
           ),
         ),
       ),

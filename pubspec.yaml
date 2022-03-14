@@ -38,6 +38,7 @@ dependencies:
   get_storage:
   webview_flutter: ^3.0.0
   flutter_svg: ^1.0.3
+  cached_network_image: ^3.2.0
 
 dev_dependencies:
   flutter_test:
